@@ -3,7 +3,14 @@ let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_rename_command='gopls'
 
-let g:go_metalinter_command='golangci-lint'
+" NOTE: if you specify golangci-lint on it's own it runs golangci-lint, but
+" vim specifies the plugins to run, or you can override using
+" g:go_metalinter_enabled.  This is an editor level config.  To make use of
+" the existing .golangci-lint.toml config per project I'm specifying
+" golangci-lint run and that means it passes through my command unadulterated
+" and :GoMetaLinter behaves consistently with me running golangci-lint run
+" locally.
+let g:go_metalinter_command='golangci-lint run'
 "let g:go_metalinter_autosave = 1
 
 let g:go_highlight_types = 1
